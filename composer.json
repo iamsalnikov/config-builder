@@ -1,0 +1,19 @@
+{
+    "name": "iamsalnikov/ConfigBuilder",
+    "description": "Config Builder",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Aleksey Salnikov",
+            "email": "me@iamsalnikov.ru"
+        }
+    ],
+    "require": {
+        "symfony/yaml": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "iamsalnikov\\ConfigBuilder\\": "./src"
+        }
+    }
+}
