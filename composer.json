@@ -13,6 +13,7 @@
     },
     "autoload": {
         "psr-4": {
+            "iamsalnikov\\ConfigBuilder\\Tests\\": "./tests",
             "iamsalnikov\\ConfigBuilder\\": "./src"
         }
     },
