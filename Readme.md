@@ -1,0 +1,3 @@
+# Config Builder
+
+[![Build Status](https://travis-ci.org/iamsalnikov/config-builder.svg?branch=master)](https://travis-ci.org/iamsalnikov/config-builder)
