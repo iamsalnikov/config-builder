@@ -16,7 +16,7 @@ class ValueProviderFactory extends ObjectFactory
      *
      * @return ValueProvider
      */
-    public function newObject($config)
+    public static function newObject($config)
     {
         $object = static::createFromConfig($config);
 

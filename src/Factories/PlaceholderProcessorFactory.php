@@ -16,7 +16,7 @@ class PlaceholderProcessorFactory extends ObjectFactory
      *
      * @return PlaceholderProcessor
      */
-    public function newObject($config)
+    public static function newObject($config)
     {
         $object = static::createFromConfig($config);
 

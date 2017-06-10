@@ -15,5 +15,8 @@
         "psr-4": {
             "iamsalnikov\\ConfigBuilder\\": "./src"
         }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
     }
 }

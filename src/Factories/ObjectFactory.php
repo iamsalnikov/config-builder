@@ -12,14 +12,6 @@ abstract class ObjectFactory
     /**
      * Create object from config
      *
-     * @param $config
-     * @return object
-     */
-    abstract public function newObject($config);
-
-    /**
-     * Create object from config
-     *
      * @param array $config
      * @return object
      * @throws FactoryException
@@ -29,7 +21,7 @@ abstract class ObjectFactory
         static::validateConfig($config);
 
         if (!array_key_exists('arguments', $config)) {
-            $config['arguments'] = null;
+            $config['arguments'] = [];
         }
 
         $reflect = new \ReflectionClass($config['class']);
