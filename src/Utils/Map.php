@@ -2,13 +2,17 @@
 
 namespace iamsalnikov\ConfigBuilder\Utils;
 
+/**
+ * Class Map
+ * @package iamsalnikov\ConfigBuilder\Utils
+ */
 class Map
 {
     /**
      * Get value
      *
-     * @param $key
-     * @param $map
+     * @param string $key 'hello', 'hello.1', 'hello.test'
+     * @param array $map
      * @return mixed
      */
     public static function getValue($key, $map)
