@@ -3,6 +3,7 @@
 namespace iamsalnikov\ConfigBuilder\ValueProviders;
 
 use iamsalnikov\ConfigBuilder\Interfaces\ValueProvider;
+use iamsalnikov\ConfigBuilder\Values\Nil;
 use iamsalnikov\ConfigBuilder\Utils\Str;
 
 /**
@@ -19,7 +20,7 @@ class Argument implements ValueProvider
         $param = $this->getParamName($param);
         $value = getopt('', [$param . '::']);
 
-        return array_key_exists($param, $value) ? $value[$param] : null;
+        return array_key_exists($param, $value) ? $value[$param] : new Nil();
     }
 
     /**

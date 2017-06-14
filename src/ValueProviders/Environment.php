@@ -3,6 +3,7 @@
 namespace iamsalnikov\ConfigBuilder\ValueProviders;
 
 use iamsalnikov\ConfigBuilder\Interfaces\ValueProvider;
+use iamsalnikov\ConfigBuilder\Values\Nil;
 use iamsalnikov\ConfigBuilder\Utils\Str;
 
 /**
@@ -31,7 +32,9 @@ class Environment implements ValueProvider
      */
     public function getValue($param)
     {
-        return getenv($this->getEnvParamName($param));
+        $value = getenv($this->getEnvParamName($param));
+
+        return $value === false ? new Nil() : $value;
     }
 
     /**

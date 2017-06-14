@@ -2,6 +2,8 @@
 
 namespace iamsalnikov\ConfigBuilder\Utils;
 
+use iamsalnikov\ConfigBuilder\Values\Nil;
+
 /**
  * Class Map
  * @package iamsalnikov\ConfigBuilder\Utils
@@ -18,14 +20,14 @@ class Map
     public static function getValue($key, $map)
     {
         if (!is_array($map)) {
-            return null;
+            return new Nil();
         }
 
         $keyParts = explode('.', $key, 2);
         $rootKey = $keyParts[0];
 
         if (!array_key_exists($rootKey, $map)) {
-            return null;
+            return new Nil();
         }
 
         return isset($keyParts[1])

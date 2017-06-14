@@ -3,6 +3,7 @@
 namespace iamsalnikov\ConfiBuilder\Tests\Unit\Utils;
 
 use iamsalnikov\ConfigBuilder\Utils\Map;
+use iamsalnikov\ConfigBuilder\Values\Nil;
 use PHPUnit\Framework\TestCase;
 
 class MapTest extends TestCase
@@ -23,12 +24,12 @@ class MapTest extends TestCase
     {
         return [
             [
-                'expected' => null,
+                'expected' => new Nil(),
                 'param' => 'hello',
                 'map' => [],
             ],
             [
-                'expected' => null,
+                'expected' => new Nil(),
                 'param' => 'hello',
                 'map' => ['world' => 'test'],
             ],
@@ -39,17 +40,17 @@ class MapTest extends TestCase
             ],
 
             [
-                'expected' => null,
+                'expected' => new Nil(),
                 'param' => 'hello.world',
                 'map' => [],
             ],
             [
-                'expected' => null,
+                'expected' => new Nil(),
                 'param' => 'hello.world',
                 'map' => ['hello' => 'world'],
             ],
             [
-                'expected' => null,
+                'expected' => new Nil(),
                 'param' => 'hello.world',
                 'map' => ['hello' => ['world']],
             ],
@@ -59,7 +60,7 @@ class MapTest extends TestCase
                 'map' => ['hello' => ['world' => 'email']],
             ],
             [
-                'expected' => null,
+                'expected' => new Nil(),
                 'param' => 'hello.1',
                 'map' => ['hello' => ['world']],
             ],

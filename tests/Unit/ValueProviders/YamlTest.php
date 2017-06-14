@@ -4,6 +4,7 @@ namespace iamsalnikov\ConfigBuilder\Tests\Unit\ValueProviders;
 
 use iamsalnikov\ConfigBuilder\ValueProviders\Exception;
 use iamsalnikov\ConfigBuilder\ValueProviders\Yaml;
+use iamsalnikov\ConfigBuilder\Values\Nil;
 use PHPUnit\Framework\TestCase;
 
 class YamlTest extends TestCase
@@ -30,7 +31,7 @@ class YamlTest extends TestCase
     {
         return [
             [
-                'expected' => null,
+                'expected' => new Nil(),
                 'expectException' => true,
                 'param' => 'hello',
                 'filePath' => 'undefined.file'

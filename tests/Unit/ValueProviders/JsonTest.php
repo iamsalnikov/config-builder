@@ -4,6 +4,7 @@ namespace iamsalnikov\ConfigBuilder\Tests\Unit\ValueProviders;
 
 use iamsalnikov\ConfigBuilder\ValueProviders\Exception;
 use iamsalnikov\ConfigBuilder\ValueProviders\Json;
+use iamsalnikov\ConfigBuilder\Values\Nil;
 use PHPUnit\Framework\TestCase;
 
 class JsonTest extends TestCase
@@ -30,7 +31,7 @@ class JsonTest extends TestCase
     {
         return [
             [
-                'expected' => null,
+                'expected' => new Nil(),
                 'expectException' => true,
                 'param' => 'hello',
                 'filePath' => 'undefined.file'
