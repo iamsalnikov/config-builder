@@ -64,7 +64,7 @@ class Configurator
         $providers = [];
 
         foreach ($this->config['value_providers'] as $name => $providerConfig) {
-            $providers[$name] = ValueProviderFactory::newObject($providerConfig);
+            yield ValueProviderFactory::newObject($providerConfig);
         }
 
         return $providers;
@@ -80,7 +80,7 @@ class Configurator
         $processors = [];
 
         foreach ($this->config['placeholder_processors'] as $name => $processorConfig) {
-            $processors[$name] = PlaceholderProcessorFactory::newObject($processorConfig);
+            yield PlaceholderProcessorFactory::newObject($processorConfig);
         }
 
         return $processors;
