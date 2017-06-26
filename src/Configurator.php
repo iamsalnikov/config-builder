@@ -57,32 +57,24 @@ class Configurator
     /**
      * Create value providers
      *
-     * @return ValueProvider[]
+     * @return \Generator|ValueProvider[]
      */
     public function getValueProviders()
     {
-        $providers = [];
-
         foreach ($this->config['value_providers'] as $name => $providerConfig) {
             yield ValueProviderFactory::newObject($providerConfig);
         }
-
-        return $providers;
     }
 
     /**
      * Create placeholder processors
      *
-     * @return PlaceholderProcessor[]
+     * @return \Generator|PlaceholderProcessor[]
      */
     public function getPlaceholderProcessors()
     {
-        $processors = [];
-
         foreach ($this->config['placeholder_processors'] as $name => $processorConfig) {
             yield PlaceholderProcessorFactory::newObject($processorConfig);
         }
-
-        return $processors;
     }
 }

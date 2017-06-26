@@ -9,15 +9,26 @@
         }
     ],
     "require": {
-        "symfony/yaml": "*"
+        "symfony/yaml": "*",
+        "symfony/console": "*"
     },
     "autoload": {
         "psr-4": {
-            "iamsalnikov\\ConfigBuilder\\Tests\\": "./tests",
             "iamsalnikov\\ConfigBuilder\\": "./src"
         }
     },
+
+    "autoload-dev": {
+        "psr-4": {
+            "iamsalnikov\\ConfigBuilder\\Tests\\": "./tests"
+        }
+    },
+
     "require-dev": {
         "phpunit/phpunit": "*"
-    }
+    },
+
+    "bin": [
+        "bin/config_builder"
+    ]
 }
