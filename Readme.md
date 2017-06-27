@@ -125,3 +125,76 @@ vendor/bin/config_builder path/to/config.example.php > path/to/config.php
 
 Провайдеров данных может быть множество. В этом случае мы ищем значение для шаблона до тех пор, пока какой-то
 из провайдеров не отдаст там что-то, либо пока не будет достигнут конец списка провайдеров.
+
+## 6. Пример работы
+
+Имеем файл конфига `config_builder.yaml`:
+
+```yaml
+placeholder_processors:
+  Basic:
+    class: iamsalnikov\ConfigBuilder\PlaceholderProcessors\BasicProcessor
+    arguments:
+      - "{{"
+      - "}}"
+
+value_providers:
+  YamlProvider:
+    class: iamsalnikov\ConfigBuilder\ValueProviders\Yaml
+    arguments:
+      - /var/www/placeholders/data.yaml
+      
+  Environment:
+    class: iamsalnikov\ConfigBuilder\ValueProviders\Environment
+    arguments:
+      - PRF_
+```
+
+Данные из файла `/var/www/placeholders/data.yaml`:
+
+```yaml
+db:
+  host: localhost
+  port: 3306
+  dbName: hello
+  user: user
+  password: superpassword
+```
+
+Переменная окружения `PRF_DB_SECURITY_KEY="securnost"`
+ 
+Контент файла с шаблонами (`config.php`):
+
+```php
+<?php
+
+return [
+    'db' => [
+      'connectionString' => 'mysql:{{db.host}}:{{db.port}}/{{db.dbName}}',
+      'user' => '{{db.user}}',
+      'password' => '{{db.password}}',
+      'encryptionKey' => '{{db.securityKey}}'
+    ]
+];
+```
+
+Запускаем команду:
+
+```
+vendor/bin/config_builder config.php
+```
+
+Получаем вывод:
+
+```php
+<?php
+
+return [
+    'db' => [
+      'connectionString' => 'mysql:localhost:3306/hello',
+      'user' => 'user',
+      'password' => 'superpassword',
+      'encryptionKey' => 'securnost'
+    ]
+];
+```
