@@ -8,6 +8,6 @@ class ValueProviderWithoutArguments implements ValueProvider
 {
     public function getValue($param)
     {
-
+        // ...
     }
 }

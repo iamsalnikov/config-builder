@@ -7,3 +7,4 @@ install:
   - composer install
 script:
   - vendor/bin/phpunit tests/
+  - vendor/bin/phpcs --standard=tests/coding_ruleset.xml

@@ -17,6 +17,6 @@ class ValueProviderWithArguments implements ValueProvider
 
     public function getValue($param)
     {
-
+        // ...
     }
 }

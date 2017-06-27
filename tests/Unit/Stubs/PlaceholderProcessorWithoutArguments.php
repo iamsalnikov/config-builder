@@ -8,11 +8,11 @@ class PlaceholderProcessorWithoutArguments implements PlaceholderProcessor
 {
     public function getPlaceholders($string)
     {
-
+        // ...
     }
 
     public function replacePlaceholders($string, $placeholders)
     {
-
+        // ...
     }
 }
