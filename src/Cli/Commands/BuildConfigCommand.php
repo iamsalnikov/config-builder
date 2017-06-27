@@ -6,6 +6,7 @@ use iamsalnikov\ConfigBuilder\ConfigBuilder;
 use iamsalnikov\ConfigBuilder\Configurator;
 use iamsalnikov\ConfigBuilder\Utils\File;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Exception\RuntimeException;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -28,7 +29,7 @@ class BuildConfigCommand extends Command
         $this->ignoreValidationErrors();
 
         $this->addArgument('file', InputArgument::REQUIRED, 'File with for replacing')
-            ->addOption('config', 'c', InputOption::VALUE_OPTIONAL, 'Builder\'s config file', getcwd() . '/config_builder.yaml');
+            ->addOption('config', 'c', InputOption::VALUE_OPTIONAL, 'Builder\'s config file', 'config_builder.yaml');
     }
 
     /**
@@ -37,10 +38,18 @@ class BuildConfigCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $configFilePath = File::getUserAbsolutePath($input->getOption('config'));
+        if (!file_exists($configFilePath) || !is_file($configFilePath) || !is_readable($configFilePath)) {
+            throw new RuntimeException('Config builder configuration file was not found (' . $configFilePath . ')');
+        }
+
+        $targetFilePath = File::getUserAbsolutePath($input->getArgument('file'));
+        if (!file_exists($targetFilePath) || !is_file($targetFilePath) || !is_readable($targetFilePath)) {
+            throw new RuntimeException('Config builder target file was not found (' . $targetFilePath . ')');
+        }
+
         $builder = $this->getConfigBuilder($configFilePath);
 
-        $filePath = File::getUserAbsolutePath($input->getArgument('file'));
-        echo $builder->processString(file_get_contents($filePath));
+        $output->write($builder->processString(file_get_contents($targetFilePath)));
     }
 
     /**
