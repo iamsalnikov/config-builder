@@ -92,6 +92,12 @@ class StrTest extends TestCase
                 'string' => 'defaultNASA',
                 'delimiter' => '_',
             ],
+
+            [
+                'expect' => 'default_NASA_Server',
+                'string' => 'defaultNASA_Server',
+                'delimiter' => '_',
+            ],
         ];
     }
 }
