@@ -37,6 +37,12 @@ class JsonTest extends TestCase
                 'filePath' => 'undefined.file'
             ],
             [
+                'expected' => new Nil(),
+                'expectException' => true,
+                'param' => 'hello',
+                'filePath' => __DIR__,
+            ],
+            [
                 'expected' => 'test',
                 'expectException' => false,
                 'param' => 'hello.world',

@@ -29,7 +29,7 @@ class Json implements ValueProvider
      */
     public function __construct($filePath)
     {
-        if (!file_exists($filePath) || !is_readable($filePath)) {
+        if (!file_exists($filePath) || is_dir($filePath) || !is_readable($filePath)) {
             throw new Exception('Config file does not exists or does not readable');
         }
 

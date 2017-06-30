@@ -34,6 +34,9 @@ class BuildConfigCommandTest extends TestCase
             ['file' => '', 'config' => ''],
             ['file' => __DIR__ . '/../../data/replace.php', 'config' => ''],
             ['file' => '', 'config' => __DIR__ . '/../../data/config_builder_config.yml'],
+            ['file' => __DIR__, 'config' => ''],
+            ['file' => '', 'config' => __DIR__],
+            ['file' => __DIR__, 'config' => __DIR__],
         ];
     }
 
