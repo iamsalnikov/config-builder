@@ -58,7 +58,7 @@ class StrTest extends TestCase
             ],
 
             [
-                'expect' => 'Hello_WOrld',
+                'expect' => 'Hello_W_Orld',
                 'string' => 'HelloWOrld',
                 'delimiter' => '_',
             ],
@@ -73,7 +73,25 @@ class StrTest extends TestCase
                 'expect' => 'Hello_f_World',
                 'string' => 'Hello_f_World',
                 'delimiter' => '_',
-            ]
+            ],
+
+            [
+                'expect' => 'NBA_Server',
+                'string' => 'NBAServer',
+                'delimiter' => '_',
+            ],
+
+            [
+                'expect' => 'default_NBA_Server',
+                'string' => 'defaultNBAServer',
+                'delimiter' => '_',
+            ],
+
+            [
+                'expect' => 'default_NASA',
+                'string' => 'defaultNASA',
+                'delimiter' => '_',
+            ],
         ];
     }
 }
