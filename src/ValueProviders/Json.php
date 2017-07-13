@@ -2,6 +2,7 @@
 
 namespace iamsalnikov\ConfigBuilder\ValueProviders;
 
+use iamsalnikov\ConfigBuilder\Utils\File;
 use iamsalnikov\ConfigBuilder\Utils\Map;
 use iamsalnikov\ConfigBuilder\Interfaces\ValueProvider;
 
@@ -29,6 +30,8 @@ class Json implements ValueProvider
      */
     public function __construct($filePath)
     {
+        $filePath = File::getConfigBasedAbsolutePath($filePath);
+
         if (!file_exists($filePath) || is_dir($filePath) || !is_readable($filePath)) {
             throw new Exception('Config file does not exists or does not readable');
         }

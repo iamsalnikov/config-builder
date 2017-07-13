@@ -47,6 +47,7 @@ class BuildConfigCommand extends Command
             throw new RuntimeException('Config builder target file was not found (' . $targetFilePath . ')');
         }
 
+        File::setConfigDirectory(dirname($configFilePath));
         $builder = $this->getConfigBuilder($configFilePath);
 
         $output->write($builder->processString(file_get_contents($targetFilePath)));

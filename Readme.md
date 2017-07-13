@@ -115,6 +115,8 @@ vendor/bin/config_builder path/to/config.example.php > path/to/config.php
 2. `iamsalnikov\ConfigBuilder\ValueProviders\Json` - провайдер значений из `json`-файла.
 
 Конструктор принимает один обязательный аргумент: путь до файла со значениями.
+Если путь не абсолютный, то он будет вычисляться относительно папки, содержащей конфиг
+сборщика.
 
 Для получения вложенных значений используем синтаксис из пункта 3 (`db.host`, `user.0.email`).
 
@@ -128,7 +130,7 @@ vendor/bin/config_builder path/to/config.example.php > path/to/config.php
 
 ## 6. Пример работы
 
-Имеем файл конфига `config_builder.yaml`:
+Имеем файл конфига `/var/www/config_builder.yaml`:
 
 ```yaml
 placeholder_processors:
@@ -142,7 +144,7 @@ value_providers:
   YamlProvider:
     class: iamsalnikov\ConfigBuilder\ValueProviders\Yaml
     arguments:
-      - /var/www/placeholders/data.yaml
+      - placeholders/data.yaml # файл будет найден в /var/www/placeholders/data.yaml
       
   Environment:
     class: iamsalnikov\ConfigBuilder\ValueProviders\Environment

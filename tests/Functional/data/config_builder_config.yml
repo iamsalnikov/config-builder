@@ -2,7 +2,7 @@ value_providers:
   ProductionValues:
     class: iamsalnikov\ConfigBuilder\ValueProviders\Yaml
     arguments:
-      - tests/Functional/data/config_builder_greet.yaml
+      - config_builder_greet.yaml
 
 placeholder_processors:
   Basic:
